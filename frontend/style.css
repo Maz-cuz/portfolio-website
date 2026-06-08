@@ -1,0 +1,85 @@
+body {
+  font-family: Arial, sans-serif;
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+  background-color: #0f172a;
+  color: #e2e8f0;
+}
+
+/* Header */
+header {
+  text-align: center;
+  padding: 60px 20px;
+  border-bottom: 1px solid #334155;
+}
+
+header h1 {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+header p {
+  color: #94a3b8;
+  font-size: 18px;
+}
+
+/* Sections */
+section {
+  margin-top: 40px;
+}
+
+h2 {
+  color: #38bdf8;
+  margin-bottom: 15px;
+}
+
+/* Skills */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  background: #1e293b;
+  display: inline-block;
+  padding: 8px 12px;
+  margin: 5px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+/* Project Cards */
+.project {
+  background: #1e293b;
+  border: 1px solid #334155;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 10px;
+  transition: 0.3s ease;
+}
+
+.project:hover {
+  transform: translateY(-5px);
+  border-color: #38bdf8;
+}
+
+/* Links */
+a {
+  color: #38bdf8;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Contact */
+section p {
+  line-height: 1.6;
+}
+
+.light-mode {
+  background-color: white;
+  color: black;
+}
