@@ -8,20 +8,26 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middleware
+// ===============================
+// MIDDLEWARE
+// ===============================
 app.use(helmet());
 app.use(cors());
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Serve static files
-app.use(express.static('public'));
+// ===============================
+// SERVE FRONTEND (IMPORTANT FIX)
+// ===============================
+app.use(express.static(path.join(__dirname, 'public')));
 
-// API Routes
+// ===============================
+// API ROUTES
+// ===============================
 app.get('/api/health', (req, res) => {
-  res.json({ 
-    status: 'ok', 
+  res.json({
+    status: 'ok',
     env: 'Node.js + Express',
     timestamp: new Date().toISOString(),
     server: 'Mazwi Ndlovu Portfolio Backend'
@@ -30,17 +36,19 @@ app.get('/api/health', (req, res) => {
 
 app.post('/api/contact', (req, res) => {
   const { name, email, message } = req.body;
+
   console.log(`New contact message from ${name} (${email}): ${message}`);
-  
-  res.json({ 
-    success: true, 
-    message: 'Message received successfully! I will get back to you soon.',
+
+  res.json({
+    success: true,
+    message: 'Message received successfully!',
     data: { name, email, message }
   });
 });
 
 app.get('/api/card/generate', (req, res) => {
   const player = req.query.player || 'Mazwi Ndlovu';
+
   res.json({
     success: true,
     data: {
@@ -53,17 +61,25 @@ app.get('/api/card/generate', (req, res) => {
   });
 });
 
+// ===============================
+// FRONTEND ROUTE (FIXED)
+// ===============================
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// Error handling
+// ===============================
+// ERROR HANDLER
+// ===============================
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({ error: 'Something went wrong!' });
 });
 
+// ===============================
+// START SERVER
+// ===============================
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-  console.log(`API endpoint: http://localhost:${PORT}/api/health`);
+  console.log(`Server running on port ${PORT}`);
+  console.log(`API endpoint: /api/health`);
 });
