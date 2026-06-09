@@ -20,7 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 // ===============================
 // SERVE FRONTEND (IMPORTANT FIX)
 // ===============================
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, "../frontend")));
 
 // ===============================
 // API ROUTES
@@ -62,10 +62,12 @@ app.get('/api/card/generate', (req, res) => {
 });
 
 // ===============================
-// FRONTEND ROUTE (FIXED)
+// FRONTEND ROUTE 
 // ===============================
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+app.use(express.static(path.join(__dirname, "frontend")));
+
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "frontend", "index.html"));
 });
 
 // ===============================
