@@ -1,5 +1,14 @@
-// PORTFOLIO JAVASCRIPT
+// ===============================
+// API BASE (PRODUCTION READY)
+// ===============================
+const API_BASE =
+  window.location.hostname === "localhost"
+    ? "http://localhost:3000"
+    : "https://portfolio-website-yn3o.onrender.com";
 
+// ===============================
+// NAV SCROLL
+// ===============================
 function scrollToSection(id) {
   const section = document.getElementById(id);
   if (section) {
@@ -7,7 +16,9 @@ function scrollToSection(id) {
   }
 }
 
-// Create navbar buttons dynamically
+// ===============================
+// NAVBAR
+// ===============================
 const nav = document.createElement("nav");
 nav.style.textAlign = "center";
 nav.style.marginBottom = "20px";
@@ -39,19 +50,17 @@ buttons.forEach(btn => {
   nav.appendChild(button);
 });
 
-// Add navbar to page
 document.body.prepend(nav);
 
 // ===============================
-// PROJECT BUTTON ACTIONS
+// PROJECT BUTTONS
 // ===============================
-
-// Add "View GitHub" buttons automatically to projects
 const projects = document.querySelectorAll(".project");
 
 projects.forEach((project, index) => {
   const btn = document.createElement("button");
   btn.innerText = "View Project";
+
   btn.style.marginTop = "10px";
   btn.style.padding = "8px 12px";
   btn.style.border = "none";
@@ -68,17 +77,14 @@ projects.forEach((project, index) => {
 });
 
 // ===============================
-// CONTACT BUTTON ACTION
+// CONTACT (API VERSION - READY)
 // ===============================
-
-// Copy email to clipboard
 function copyEmail() {
   const email = "mcndluvo14@gmail.com";
   navigator.clipboard.writeText(email);
   alert("Email copied to clipboard!");
 }
 
-// Create contact button
 const contactBtn = document.createElement("button");
 contactBtn.innerText = "Copy Email";
 contactBtn.style.display = "block";
@@ -91,13 +97,11 @@ contactBtn.style.backgroundColor = "#f59e0b";
 
 contactBtn.addEventListener("click", copyEmail);
 
-// Add it at bottom
 document.body.appendChild(contactBtn);
 
 // ===============================
-// DARK MODE TOGGLE (BONUS)
+// DARK MODE
 // ===============================
-
 const toggleBtn = document.createElement("button");
 toggleBtn.innerText = "Toggle Theme";
 toggleBtn.style.position = "fixed";
